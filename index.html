@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>카카오톡 앱 직접 실행 테스트</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 3rem; }
+    a.button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      background: #fae100;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 카카오톡 앱 직접 실행 테스트</h1>
+
+  <p>아래 버튼들을 클릭해 테스트해보세요.</p>
+
+  <a class="button" href="https://pf.kakao.com/_xdcVxin/chat">일반 https 링크 열기</a><br>
+
+  <a class="button" href="kakaoopen://pf.kakao.com/_xdcVxin/chat">kakaoopen:// 링크 열기</a><br>
+
+  <a class="button" href="intent://pf.kakao.com/_xdcVxin/chat#Intent;scheme=https;package=com.kakao.talk;end">intent:// 링크 열기</a><br>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: gray;">
+    안드로이드 크롬 / 삼성 인터넷에서 테스트해보세요.<br>
+    아이폰은 대부분 작동하지 않습니다.
+  </p>
+</body>
+</html>
