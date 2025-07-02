@@ -2,68 +2,56 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>카카오톡 앱 실행 테스트</title>
+  <title>카카오톡 앱 실행 (삼성인터넷/크롬 우회 테스트)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 3rem;
-      background: #fffef2;
-    }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-    }
-    a.button {
+    body { font-family: sans-serif; text-align: center; padding: 2rem; background-color: #fffef8; }
+    h1 { font-size: 1.6rem; margin-bottom: 1rem; }
+    .button {
       display: inline-block;
       padding: 1rem 2rem;
       margin: 0.5rem;
+      font-size: 1rem;
       background: #fae100;
       color: #000;
       font-weight: bold;
+      border: none;
       border-radius: 8px;
+      cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s;
     }
-    a.button:hover {
-      background: #ffe934;
-    }
-    .notice {
+    .note {
+      font-size: 0.9rem;
       margin-top: 2rem;
-      font-size: 0.95rem;
-      color: #555;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <h1>🧪 카카오톡 앱 직접 실행 테스트</h1>
+  <h1>🛠️ 삼성인터넷/크롬용 카카오톡 앱 실행 테스트</h1>
 
-  <p>아래 버튼들을 눌러 각각의 방식이 동작하는지 확인해보세요.</p>
-
-  <a class="button" href="https://pf.kakao.com/_xdcVxin/chat">
-    1️⃣ 일반 https 링크
+  <a class="button" href="intent://pf.kakao.com/_xdcVxin/chat#Intent;scheme=https;package=com.kakao.talk;action=android.intent.action.VIEW;end">
+    1️⃣ 정제된 intent 링크 직접 실행
   </a><br>
 
-  <a class="button" href="kakaoopen://pf.kakao.com/_xdcVxin/chat">
-    2️⃣ kakaoopen:// 링크
-  </a><br>
+  <button class="button" onclick="openViaJS()">2️⃣ JS 기반 intent 실행</button><br>
 
-  <a class="button" href="intent://pf.kakao.com/_xdcVxin/chat#Intent;scheme=https;package=com.kakao.talk;end">
-    3️⃣ intent:// 링크 (기본)
-  </a><br>
+  <button class="button" onclick="replaceViaJS()">3️⃣ JS replace() 기반 실행</button><br>
 
-  <a class="button" href="intent://kakaolink?url=https%3A%2F%2Fpf.kakao.com%2F_xdcVxin%2Fchat#Intent;scheme=kakaolink;package=com.kakao.talk;end">
-    4️⃣ intent:// + kakaolink 스킴
-  </a><br>
-
-  <a class="button" href="intent://pf.kakao.com/_xdcVxin/chat#Intent;scheme=https;package=com.kakao.talk;S.browser_fallback_url=https%3A%2F%2Fpf.kakao.com%2F_xdcVxin%2Fchat;end">
-    5️⃣ intent:// + fallback URL
-  </a><br>
-
-  <div class="notice">
-    ※ Android 크롬/삼성인터넷에서 테스트 권장<br>
-    ※ iPhone은 대부분 작동 안함
+  <div class="note">
+    ⚠️ Android + 삼성인터넷 or Chrome에서 테스트<br>
+    ⚠️ 반드시 HTTPS 환경에서 실행 (로컬 파일/HTTP에서는 차단됨)<br>
+    ❌ iOS에서는 작동하지 않음
   </div>
+
+  <script>
+    function openViaJS() {
+      window.location.href = "intent://pf.kakao.com/_xdcVxin/chat#Intent;scheme=https;package=com.kakao.talk;action=android.intent.action.VIEW;end";
+    }
+
+    function replaceViaJS() {
+      window.location.replace("intent://pf.kakao.com/_xdcVxin/chat#Intent;scheme=https;package=com.kakao.talk;action=android.intent.action.VIEW;end");
+    }
+  </script>
 </body>
 </html>
